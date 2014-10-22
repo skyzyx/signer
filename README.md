@@ -1,16 +1,16 @@
 # Signer
 
-| [![Source](http://img.shields.io/badge/source-skyzyx/signer-blue.svg?style=flat-square)](https://github.com/skyzyx/signer)
+[![Source](http://img.shields.io/badge/source-skyzyx/signer-blue.svg?style=flat-square)](https://github.com/skyzyx/signer)
 [![Latest Stable Version](http://img.shields.io/packagist/v/skyzyx/signer.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
 [![Total Downloads](http://img.shields.io/packagist/dt/skyzyx/signer.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
-[![Open Issues](http://img.shields.io/github/issues/skyzyx/signer.svg?style=flat-square)](https://github.com/skyzyx/signer)
-| [![Build Status](http://img.shields.io/travis/skyzyx/signer/master.svg?style=flat-square)](https://travis-ci.org/skyzyx/signer)
+[![Open Issues](http://img.shields.io/github/issues/skyzyx/signer.svg?style=flat-square)](https://github.com/skyzyx/signer)  
+[![Build Status](http://img.shields.io/travis/skyzyx/signer/master.svg?style=flat-square)](https://travis-ci.org/skyzyx/signer)
 [![Coverage Status](http://img.shields.io/coveralls/skyzyx/signer/master.svg?style=flat-square)](https://coveralls.io/r/skyzyx/signer?branch=master)
 [![Code Climate](http://img.shields.io/codeclimate/github/skyzyx/signer.svg?style=flat-square)](https://codeclimate.com/github/skyzyx/signer)
 [![Code Quality](http://img.shields.io/scrutinizer/g/skyzyx/signer.svg?style=flat-square)](https://scrutinizer-ci.com/g/skyzyx/signer)
 [![Dependency Status](https://www.versioneye.com/user/projects/!!!!!!!/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/!!!!!!!)
-[![HHVM Support](http://img.shields.io/hhvm/skyzyx/signer.svg?style=flat-square)](https://hhvm.com)
-| [![Documentation Status](https://readthedocs.org/projects/shared-utilities/badge/?version=master&style=flat-square)](https://readthedocs.org/projects/shared-utilities/?badge=master)
+[![HHVM Support](http://img.shields.io/hhvm/skyzyx/signer.svg?style=flat-square)](https://hhvm.com)  
+[![Documentation Status](https://readthedocs.org/projects/shared-utilities/badge/?version=master&style=flat-square)](https://readthedocs.org/projects/shared-utilities/?badge=master)
 [![MIT License](http://img.shields.io/packagist/l/skyzyx/signer-blue.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
 [![Author](http://img.shields.io/badge/author-@skyzyx-blue.svg?style=flat-square)](https://twitter.com/skyzyx)
 
