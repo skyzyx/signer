@@ -1,0 +1,8 @@
+composer.lock
+phpcs.xml
+phpdoc.dist.xml
+phpmd.xml
+docs/_build/
+build/
+tests/results/
+vendor/
