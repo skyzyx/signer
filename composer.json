@@ -1,0 +1,41 @@
+{
+    "name": "skyzyx/signer",
+    "description": "Cryptographically sign data to prevent tampering.",
+    "keywords": ["crypto","signing","sha256"],
+    "type": "library",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Ryan Parman",
+            "homepage": "http://ryanparman.com"
+        },
+        {
+            "name": "Michael Dowling",
+            "homepage": "http://mtdowling.com"
+        },
+        {
+            "name": "Jeremy Lindblom",
+            "homepage": "http://www.webjeremy.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/skyzyx/signer/issues"
+    },
+    "require": {
+        "php": ">=5.4.0",
+        "ext-mcrypt": "*",
+        "ext-openssl": "*"
+    },
+    "require-dev": {
+        "codeclimate/php-test-reporter": "*@dev",
+        "phpunit/phpcov": "~2.0",
+        "phpunit/phpunit": "~4.3",
+        "satooshi/php-coveralls": "*@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "Skyzyx\\": "src/",
+            "Skyzyx\\Tests": "tests/"
+        }
+    }
+}
