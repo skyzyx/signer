@@ -42,6 +42,9 @@ class Signer
     /** @var string */
     private $client_secret;
 
+    /** @var string */
+    private $hash_algo = '';
+
     /** @var integer */
     private $cache_size = 0;
 
@@ -59,12 +62,17 @@ class Signer
      * @param string $client_secret A string which is the private portion of the keypair identifying the client party.
      *                              The pairing of the public and private portions of the keypair should only be known
      *                              to the client party and the signing party.
+     * @param string $hash_algo     The hash algorithm to use for signing. Run `hash_algos()` to see what's supported.
+     *                              The default value is `sha512`.
+     *
+     * @see http://php.net/hash_algos
      */
-    public function __construct($self_key, $client_id, $client_secret)
+    public function __construct($self_key, $client_id, $client_secret, $hash_algo = 'sha512')
     {
         $this->self_key      = $self_key;
         $this->client_id     = $client_id;
         $this->client_secret = $client_secret;
+        $this->hash_algo     = $hash_algo;
     }
 
     /**
@@ -108,7 +116,7 @@ class Signer
             $this->getClientSecret()
         );
 
-        $signature = hash_hmac('sha512', $s2s, $signing_key);
+        $signature = hash_hmac($this->hash_algo, $s2s, $signing_key);
 
         return $signature;
     }
@@ -123,8 +131,8 @@ class Signer
             "SIGNER-HMAC-SHA512\n%s\n%s\n%s\n%s",
             $self_key,
             $client_id,
-            hash('sha512', $scope),
-            hash('sha512', $context)
+            hash($this->hash_algo, $scope),
+            hash($this->hash_algo, $context)
         );
     }
 
@@ -176,9 +184,9 @@ class Signer
                 $this->cacheSize = 0;
             }
 
-            $self_key_sign = hash_hmac('sha512', $self_key, $client_secret, true);
-            $client_id_sign = hash_hmac('sha512', $client_id, $self_key_sign, true);
-            $this->cache[$k] = hash_hmac('sha512', 'signer', $client_id_sign, true);
+            $self_key_sign = hash_hmac($this->hash_algo, $self_key, $client_secret, true);
+            $client_id_sign = hash_hmac($this->hash_algo, $client_id, $self_key_sign, true);
+            $this->cache[$k] = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
         }
 
         return $this->cache[$k];

@@ -4,17 +4,44 @@
 | [![Build Status][]][] [![Coverage Status][]][] [![Code Climate][]][] [![Code Quality][]][] [![Dependency Status][]][] [![HHVM Support][]][] 
 | [![Documentation Status][]][] [![MIT License][]][] [![Author][]][]
 
-{Fill-in: Description of the project.}
+The **Signer** class is designed for those who are signing data on behalf of a public-private keypair.
+
+In principle, the "client party" has public key (i.e., `client_id`) has a matching private key (i.e., `client_secret`) that can be verified by both the signer, as well as the client, but by nobody else as we don't want to make forgeries possible.
+
+The "signing party" has a simple an identifier which acts as an additional piece of entropy in the algorithm, and can help differentiate between multiple signing parties if the client party does something like try to use the same public-private keypair independently of a signing party (as is common with GPG signing).
+
+For example, in the original AWS implementation, the "self key" for AWS was `AWS4`.
 
 
 ## Examples
 
-{Fill-in: Example usage of this code.}
+```php
+use Skyzyx\Signer\Signer;
+
+$self_key = 'Skyzyx';
+$client_id = 'k3qDQy0Tr56v1ceo';
+$client_secret = 'O5j@pG@Jt%AzyiJTEfo!£LSz8yqSj)JX)S6FvW%58KjlS9bc%Fi7&&C4KSCT8hxd';
+
+$signer = new Signer($self_key, $client_id, $client_secret, 'sha512');
+$signature = $signer->sign([
+    'ClientID' => $client_id,
+    'Domain' => 'foo.com',
+    'Path' => '/',
+    'Expires' => 'Wed, 13 Jan 2021 22:23:01 GMT',
+    'Secure' => null,
+    'HttpOnly' => null,
+]);
+
+$signature = wordwrap($signature, 64, "\n", true);
+#=> dfbffab5b6f7156402da8147886bba3eba67bd5baf2e780ba9d39e8437db7c47
+#=> 35e9a0b834aa21ac76f98da8c52a2a0cd1b0192d0f0df5c98e3848b1b2e1a037
+```
 
 
 ## Features
 
-{Fill-in: Features this package provides.}
+* SHA-512 signatures.
+* Based on a simplified version of the AWS Signature v4.
 
 
 ## Installation
@@ -74,6 +101,7 @@ Here's the process for contributing:
 
 ## Authors, Copyright & Licensing
 
+* Copyright (c) 2011-2014 [Amazon Web Services, Inc.](http://aws.amazon.com)
 * Copyright (c) 2014 [Ryan Parman](http://ryanparman.com).
 
 See also the list of [contributors](/skyzyx/signer/contributors) who participated in this project.
