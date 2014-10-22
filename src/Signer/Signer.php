@@ -45,9 +45,6 @@ class Signer
     /** @var string */
     private $hash_algo = '';
 
-    /** @var integer */
-    private $cache_size = 0;
-
 
     /**************************************************************************/
     // PUBLIC METHODS
@@ -125,7 +122,7 @@ class Signer
     /**************************************************************************/
     // PRIVATE METHODS
 
-    public function createStringToSign($self_key, $client_id, $scope, $context)
+    private function createStringToSign($self_key, $client_id, $scope, $context)
     {
         return sprintf(
             "SIGNER-HMAC-SHA512\n%s\n%s\n%s\n%s",
@@ -143,7 +140,7 @@ class Signer
      * @param  array  $payload The data that you want to sign.
      * @return string A canonical string representation of the data to sign.
      */
-    public function createContext(array $payload)
+    private function createContext(array $payload)
     {
         $canonical_payload = [];
 
@@ -168,7 +165,7 @@ class Signer
      * @param  string $client_secret A string which is the private portion of the keypair identifying the client party.
      * @return string The signing salt.
      */
-    public function getSigningSalt($self_key, $client_id, $client_secret)
+    private function getSigningSalt($self_key, $client_id, $client_secret)
     {
         $k = implode('_', [
             $self_key,
@@ -176,20 +173,11 @@ class Signer
             $client_secret
         ]);
 
-        if (!isset($this->cache[$k])) {
+        $self_key_sign = hash_hmac($this->hash_algo, $self_key, $client_secret, true);
+        $client_id_sign = hash_hmac($this->hash_algo, $client_id, $self_key_sign, true);
+        $salt = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
 
-            // Clear the cache when it reaches 50 entries
-            if (++$this->cache_size > 50) {
-                $this->cache = [];
-                $this->cacheSize = 0;
-            }
-
-            $self_key_sign = hash_hmac($this->hash_algo, $self_key, $client_secret, true);
-            $client_id_sign = hash_hmac($this->hash_algo, $client_id, $self_key_sign, true);
-            $this->cache[$k] = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
-        }
-
-        return $this->cache[$k];
+        return $salt;
     }
 
     /**
@@ -199,7 +187,7 @@ class Signer
      * @param  string $client_id A string which is the public portion of the keypair identifying the client party.
      * @return string The string which represents the scope in which the signature is valid.
      */
-    public function createScope($self_key, $client_id)
+    private function createScope($self_key, $client_id)
     {
         return sprintf(
             "%s/%s/signer",
