@@ -139,7 +139,8 @@ class Signer
     {
         /** @var string */
         return sprintf(
-            "SIGNER-HMAC-SHA512\n%s\n%s\n%s\n%s",
+            "SIGNER-HMAC-%s\n%s\n%s\n%s\n%s",
+            strtoupper($this->hash_algo),
             $self_key,
             $client_id,
             hash($this->hash_algo, $scope),
