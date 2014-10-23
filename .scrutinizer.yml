@@ -81,13 +81,13 @@ checks:
         no_debug_code: true
         newline_at_end_of_file: true
         naming_conventions:
-            local_variable: '^[a-z][a-zA-Z0-9]*$'
+            local_variable: '^[a-z][a-zA-Z0-9_]*$'
             abstract_class_name: ^Abstract|Factory$
             utility_class_name: 'Utils?$'
             constant_name: '^[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)*$'
-            property_name: '^[a-z][a-zA-Z0-9]*$'
+            property_name: '^[a-z][a-zA-Z0-9_]*$'
             method_name: '^(?:[a-z]|__)[a-zA-Z0-9]*$'
-            parameter_name: '^[a-z][a-zA-Z0-9]*$'
+            parameter_name: '^[a-z][a-zA-Z0-9_]*$'
             interface_name: '^[A-Z][a-zA-Z0-9]*Interface$'
             type_name: '^[A-Z][a-zA-Z0-9]*$'
             exception_name: '^[A-Z][a-zA-Z0-9]*Exception$'
