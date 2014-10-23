@@ -126,6 +126,12 @@ class Signer
     /**************************************************************************/
     // PRIVATE METHODS
 
+    /**
+     * @param string $self_key
+     * @param string $client_id
+     * @param string $scope
+     * @param string $context
+     */
     private function createStringToSign($self_key, $client_id, $scope, $context)
     {
         /** @var string */
