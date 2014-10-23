@@ -19,7 +19,7 @@ In principle, the "client party" has public key (i.e., `client_id`) and a matchi
 
 The "signing party" has a simple identifier which acts as an additional piece of entropy in the algorithm, and can help differentiate between multiple signing parties if the client party does something like try to use the same public-private keypair independently of a signing party (as is common with GPG signing).
 
-For example, in the original AWS implementation, the "self key" for AWS was `AWS4`.
+Based on a simplified version of the AWS Signature v4.
 
 
 ## Examples
@@ -45,12 +45,6 @@ $signature = wordwrap($signature, 64, "\n", true);
 #=> dfbffab5b6f7156402da8147886bba3eba67bd5baf2e780ba9d39e8437db7c47
 #=> 35e9a0b834aa21ac76f98da8c52a2a0cd1b0192d0f0df5c98e3848b1b2e1a037
 ```
-
-
-## Features
-
-* SHA-512 signatures.
-* Based on a simplified version of the AWS Signature v4.
 
 
 ## Installation
