@@ -34,10 +34,10 @@ $client_secret = 'O5j@pG@Jt%AzyiJTEfo!£LSz8yqSj)JX)S6FvW%58KjlS9bc%Fi7&&C4KSCT8
 $signer = new Signer($self_key, $client_id, $client_secret, 'sha512');
 $signature = $signer->sign([
     'ClientID' => $client_id,
-    'Domain' => 'foo.com',
-    'Path' => '/',
-    'Expires' => 'Wed, 13 Jan 2021 22:23:01 GMT',
-    'Secure' => null,
+    'Domain'   => 'foo.com',
+    'Path'     => '/',
+    'Expires'  => 'Wed, 13 Jan 2021 22:23:01 GMT',
+    'Secure'   => null,
     'HttpOnly' => null,
 ]);
 
