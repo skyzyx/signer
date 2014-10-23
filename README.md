@@ -15,9 +15,9 @@
 
 The **Signer** class is designed for those who are signing data on behalf of a public-private keypair.
 
-In principle, the "client party" has public key (i.e., `client_id`) has a matching private key (i.e., `client_secret`) that can be verified by both the signer, as well as the client, but by nobody else as we don't want to make forgeries possible.
+In principle, the "client party" has public key (i.e., `client_id`) and a matching private key (i.e., `client_secret`) that can be verified by both the signer and the client (but nobody else as we don't want to make forgeries possible).
 
-The "signing party" has a simple an identifier which acts as an additional piece of entropy in the algorithm, and can help differentiate between multiple signing parties if the client party does something like try to use the same public-private keypair independently of a signing party (as is common with GPG signing).
+The "signing party" has a simple identifier which acts as an additional piece of entropy in the algorithm, and can help differentiate between multiple signing parties if the client party does something like try to use the same public-private keypair independently of a signing party (as is common with GPG signing).
 
 For example, in the original AWS implementation, the "self key" for AWS was `AWS4`.
 
