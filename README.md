@@ -3,7 +3,7 @@
 [![Source](http://img.shields.io/badge/source-skyzyx/signer-blue.svg?style=flat-square)](https://github.com/skyzyx/signer)
 [![Latest Stable Version](http://img.shields.io/packagist/v/skyzyx/signer.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
 [![Total Downloads](http://img.shields.io/packagist/dt/skyzyx/signer.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
-[![Open Issues](http://img.shields.io/github/issues/skyzyx/signer.svg?style=flat-square)](https://github.com/skyzyx/signer)  
+[![Open Issues](http://img.shields.io/github/issues/skyzyx/signer.svg?style=flat-square)](https://github.com/skyzyx/signer/issues)  
 [![Build Status](http://img.shields.io/travis/skyzyx/signer/master.svg?style=flat-square)](https://travis-ci.org/skyzyx/signer)
 [![Coverage Status](http://img.shields.io/coveralls/skyzyx/signer/master.svg?style=flat-square)](https://coveralls.io/r/skyzyx/signer?branch=master)
 [![Code Climate](http://img.shields.io/codeclimate/github/skyzyx/signer.svg?style=flat-square)](https://codeclimate.com/github/skyzyx/signer)
