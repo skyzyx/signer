@@ -107,9 +107,9 @@ class Signer
 
     public function sign(array $payload)
     {
-        $scope = $this->createScope($this->getSelfKey(), $this->getClientId());
-        $context = $this->createContext($payload);
-        $s2s = $this->createStringToSign($this->getSelfKey(), $this->getClientId(), $scope, $context);
+        $scope       = $this->createScope($this->getSelfKey(), $this->getClientId());
+        $context     = $this->createContext($payload);
+        $s2s         = $this->createStringToSign($this->getSelfKey(), $this->getClientId(), $scope, $context);
         $signing_key = $this->getSigningSalt(
             $this->getSelfKey(),
             $this->getClientId(),
@@ -182,9 +182,9 @@ class Signer
      */
     private function getSigningSalt($self_key, $client_id, $client_secret)
     {
-        $self_key_sign = hash_hmac($this->hash_algo, $self_key, $client_secret, true);
+        $self_key_sign  = hash_hmac($this->hash_algo, $self_key, $client_secret, true);
         $client_id_sign = hash_hmac($this->hash_algo, $client_id, $self_key_sign, true);
-        $salt = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
+        $salt           = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
 
         /** @var string */
         return $salt;
@@ -201,7 +201,7 @@ class Signer
     {
         /** @var string */
         return sprintf(
-            "%s/%s/signer",
+            '%s/%s/signer',
             $self_key,
             $client_id
         );

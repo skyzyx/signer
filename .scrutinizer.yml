@@ -70,7 +70,7 @@ checks:
         no_non_implemented_abstract_methods: true
         no_mixed_inline_html: true
         no_long_variable_names:
-            maximum: '20'
+            maximum: '40'
         no_goto: true
         no_global_keyword: true
         no_exit: true
