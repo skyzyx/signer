@@ -127,10 +127,13 @@ class Signer
     // PRIVATE METHODS
 
     /**
-     * @param string $self_key
-     * @param string $client_id
-     * @param string $scope
-     * @param string $context
+     * Creates the string-to-sign based on a variety of factors.
+     *
+     * @param  string $self_key  A string which identifies the signing party and adds additional entropy.
+     * @param  string $client_id A string which is the public portion of the keypair identifying the client party.
+     * @param  string $scope     The results of a call to the `createScope()` method.
+     * @param  string $context   The results of a call to the `createContext()` method.
+     * @return string The final string to be signed.
      */
     private function createStringToSign($self_key, $client_id, $scope, $context)
     {
