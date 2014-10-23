@@ -79,6 +79,7 @@ class Signer
      */
     public function getSelfKey()
     {
+        /** @var string */
         return $this->self_key;
     }
 
@@ -89,6 +90,7 @@ class Signer
      */
     public function getClientId()
     {
+        /** @var string */
         return $this->client_id;
     }
 
@@ -99,6 +101,7 @@ class Signer
      */
     public function getClientSecret()
     {
+        /** @var string */
         return $this->client_secret;
     }
 
@@ -115,6 +118,7 @@ class Signer
 
         $signature = hash_hmac($this->hash_algo, $s2s, $signing_key);
 
+        /** @var string */
         return $signature;
     }
 
@@ -124,6 +128,7 @@ class Signer
 
     private function createStringToSign($self_key, $client_id, $scope, $context)
     {
+        /** @var string */
         return sprintf(
             "SIGNER-HMAC-SHA512\n%s\n%s\n%s\n%s",
             $self_key,
@@ -154,6 +159,7 @@ class Signer
         $signed_headers_string = implode(';', array_keys($canonical_payload));
         $canon = implode("\n", $canonical_payload) . "\n\n" . $signed_headers_string;
 
+        /** @var string */
         return $canon;
     }
 
@@ -167,16 +173,11 @@ class Signer
      */
     private function getSigningSalt($self_key, $client_id, $client_secret)
     {
-        $k = implode('_', [
-            $self_key,
-            $client_id,
-            $client_secret
-        ]);
-
         $self_key_sign = hash_hmac($this->hash_algo, $self_key, $client_secret, true);
         $client_id_sign = hash_hmac($this->hash_algo, $client_id, $self_key_sign, true);
         $salt = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
 
+        /** @var string */
         return $salt;
     }
 
@@ -189,6 +190,7 @@ class Signer
      */
     private function createScope($self_key, $client_id)
     {
+        /** @var string */
         return sprintf(
             "%s/%s/signer",
             $self_key,
