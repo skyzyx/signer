@@ -10,7 +10,7 @@
 [![Code Quality](http://img.shields.io/scrutinizer/g/skyzyx/signer.svg?style=flat-square)](https://scrutinizer-ci.com/g/skyzyx/signer)
 [![Dependency Status](https://www.versioneye.com/user/projects/54483c0839f096d562000068/badge.svg?style=flat-square)](https://www.versioneye.com/user/projects/54483c0839f096d562000068)
 [![HHVM Support](http://img.shields.io/hhvm/skyzyx/signer.svg?style=flat-square)](https://hhvm.com)  
-[![MIT License](http://img.shields.io/packagist/l/skyzyx/signer-blue.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
+[![License](http://img.shields.io/packagist/l/skyzyx/signer-blue.svg?style=flat-square)](https://packagist.org/packages/skyzyx/signer)
 [![Author](http://img.shields.io/badge/author-@skyzyx-blue.svg?style=flat-square)](https://twitter.com/skyzyx)
 
 The **Signer** class is designed for those who are signing data on behalf of a public-private keypair.
