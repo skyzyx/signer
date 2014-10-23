@@ -161,15 +161,16 @@ class Signer
         foreach ($payload as $k => $v) {
             $k = strtolower($k);
             $v = strtolower($v);
+
             $canonical_payload[$k] = sprintf('%s=%s', $k, $v);
         }
 
         ksort($canonical_payload);
         $signed_headers_string = implode(';', array_keys($canonical_payload));
-        $canon = implode("\n", $canonical_payload) . "\n\n" . $signed_headers_string;
+        $canonical_context     = implode("\n", $canonical_payload) . "\n\n" . $signed_headers_string;
 
         /** @var string */
-        return $canon;
+        return $canonical_context;
     }
 
     /**
