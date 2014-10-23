@@ -105,18 +105,19 @@ class Signer
         return $this->client_secret;
     }
 
+    /**
+     * Sign the payload to produce a signature for its contents.
+     *
+     * @param  array  $payload The data to generate a signature for.
+     * @return string The signature for the payload contents.
+     */
     public function sign(array $payload)
     {
         $scope       = $this->createScope($this->getSelfKey(), $this->getClientId());
         $context     = $this->createContext($payload);
         $s2s         = $this->createStringToSign($this->getSelfKey(), $this->getClientId(), $scope, $context);
-        $signing_key = $this->getSigningSalt(
-            $this->getSelfKey(),
-            $this->getClientId(),
-            $this->getClientSecret()
-        );
-
-        $signature = hash_hmac($this->hash_algo, $s2s, $signing_key);
+        $signing_key = $this->getSigningSalt($this->getSelfKey(), $this->getClientId(), $this->getClientSecret());
+        $signature   = hash_hmac($this->hash_algo, $s2s, $signing_key);
 
         /** @var string */
         return $signature;
