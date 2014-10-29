@@ -28,7 +28,7 @@ namespace Skyzyx\Signer;
  *
  * For example, in the original AWS implementation, the "self key" for AWS was "AWS4".
  */
-class Signer
+class Signer implements SignerInterface
 {
     /**************************************************************************/
     // PROPERTIES
@@ -73,9 +73,7 @@ class Signer
     }
 
     /**
-     * Gets the self key that was set in the constructor.
-     *
-     * @return string The self key.
+     * {@inheritdoc}
      */
     public function getSelfKey()
     {
@@ -84,9 +82,7 @@ class Signer
     }
 
     /**
-     * Gets the client key that was set in the constructor.
-     *
-     * @return string The client key.
+     * {@inheritdoc}
      */
     public function getClientId()
     {
@@ -95,9 +91,7 @@ class Signer
     }
 
     /**
-     * Gets the client secret that was set in the constructor.
-     *
-     * @return string The client secret.
+     * {@inheritdoc}
      */
     public function getClientSecret()
     {
@@ -106,10 +100,7 @@ class Signer
     }
 
     /**
-     * Sign the payload to produce a signature for its contents.
-     *
-     * @param  array  $payload The data to generate a signature for.
-     * @return string The signature for the payload contents.
+     * {@inheritdoc}
      */
     public function sign(array $payload)
     {
