@@ -52,7 +52,7 @@ $signature = wordwrap($signature, 64, "\n", true);
 
 Using [Composer]:
 ```bash
-composer require skyzyx/signer=~1.0
+composer require skyzyx/signer=^1.0.0
 ```
 
 And include it in your scripts:
@@ -68,7 +68,7 @@ Firstly, run `composer install -o` to download and install the dependencies.
 
 You can run the tests as follows:
 ```bash
-./vendor/bin/phpunit
+bin/phpunit
 ```
 
 
