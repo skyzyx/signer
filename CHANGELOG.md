@@ -1,8 +1,14 @@
 # CHANGELOG
 
-Git commit messages.
+Cleaned-up from Git commit messages.
 
 ## 1.0.3 - 2015-02-11
+
+* CHANGLOG tweaks.
+* Moved CHANGELOG to CHANGELOG.md.
+* Updated the development dependencies. Added a CHANGELOG.
+* Update README.md
+* Updated the dependencies.
 
 ## 1.0.2 - 2014-10-29
 
