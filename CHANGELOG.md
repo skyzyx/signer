@@ -2,7 +2,9 @@
 
 Git commit messages.
 
-## 1.0.2 - 2015-02-11
+## 1.0.3 - 2015-02-11
+
+## 1.0.2 - 2014-10-29
 
 * Removed the phpcs.xml definition. Added a SignerInterface interface.
 * Updated the README.
