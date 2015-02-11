@@ -4,9 +4,9 @@ Git commit messages.
 
 ## 1.0.2 - 2015-02-11
 
-Removed the phpcs.xml definition. Added a SignerInterface interface.
-Updated the README.
-Updated the dependencies.
+* Removed the phpcs.xml definition. Added a SignerInterface interface.
+* Updated the README.
+* Updated the dependencies.
 
 ## 1.0.1 - 2014-10-23
 
