@@ -203,15 +203,15 @@ class Signer implements SignerInterface, LoggerAwareInterface
         $salt           = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
 
         $this->logger->debug(__FUNCTION__, [
-            'input'  => [
-                'self_key'       => $self_key,
-                'client_id'      => $client_id,
-                'client_secret'  => $client_secret,
+            'input' => [
+                'self_key' => $self_key,
+                'client_id' => $client_id,
+                'client_secret' => $client_secret,
             ],
             'output' => [
-                'self_key_sign'  => $self_key_sign,
+                'self_key_sign' => $self_key_sign,
                 'client_id_sign' => $client_id_sign,
-                'salt'           => $salt,
+                'salt' => $salt,
             ],
         ]);
 
