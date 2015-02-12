@@ -32,6 +32,9 @@
         "phpunit/phpunit": "~4.3",
         "satooshi/php-coveralls": "*@dev"
     },
+    "suggest": {
+        "monolog/monolog": ""
+    },
     "config": {
         "bin-dir": "bin/"
     },
