@@ -14,6 +14,11 @@
 
 namespace Skyzyx\Signer;
 
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerAwareTrait;
+use Psr\Log\LoggerTrait;
+use Psr\Log\NullLogger;
+
 /**
  * The Signer class is designed for those who are signing data on behalf of a public-private keypair.
  *
@@ -28,8 +33,11 @@ namespace Skyzyx\Signer;
  *
  * For example, in the original AWS implementation, the "self key" for AWS was "AWS4".
  */
-class Signer implements SignerInterface
+class Signer implements SignerInterface, LoggerAwareInterface
 {
+    use LoggerAwareTrait;
+
+
     /**************************************************************************/
     // PROPERTIES
 
@@ -70,6 +78,7 @@ class Signer implements SignerInterface
         $this->client_id     = $client_id;
         $this->client_secret = $client_secret;
         $this->hash_algo     = $hash_algo;
+        $this->logger        = new NullLogger();
     }
 
     /**
@@ -129,8 +138,7 @@ class Signer implements SignerInterface
      */
     private function createStringToSign($self_key, $client_id, $scope, $context)
     {
-        /** @var string */
-        return sprintf(
+        $s2s = sprintf(
             "SIGNER-HMAC-%s\n%s\n%s\n%s\n%s",
             strtoupper($this->hash_algo),
             $self_key,
@@ -138,6 +146,13 @@ class Signer implements SignerInterface
             hash($this->hash_algo, $scope),
             hash($this->hash_algo, $context)
         );
+
+        $this->logger->debug(__FUNCTION__, [
+            'string_to_sign' => $s2s,
+        ]);
+
+        /** @var string */
+        return $s2s;
     }
 
     /**
@@ -162,6 +177,13 @@ class Signer implements SignerInterface
         $signed_headers_string = implode(';', array_keys($canonical_payload));
         $canonical_context     = implode("\n", $canonical_payload) . "\n\n" . $signed_headers_string;
 
+        $this->logger->debug(__FUNCTION__, [
+            'payload'               => $payload,
+            'canonical_payload'     => $canonical_payload,
+            'signed_headers_string' => $signed_headers_string,
+            'canonical_context'     => $canonical_context,
+        ]);
+
         /** @var string */
         return $canonical_context;
     }
@@ -180,6 +202,19 @@ class Signer implements SignerInterface
         $client_id_sign = hash_hmac($this->hash_algo, $client_id, $self_key_sign, true);
         $salt           = hash_hmac($this->hash_algo, 'signer', $client_id_sign, true);
 
+        $this->logger->debug(__FUNCTION__, [
+            'input'  => [
+                'self_key'       => $self_key,
+                'client_id'      => $client_id,
+                'client_secret'  => $client_secret,
+            ],
+            'output' => [
+                'self_key_sign'  => $self_key_sign,
+                'client_id_sign' => $client_id_sign,
+                'salt'           => $salt,
+            ],
+        ]);
+
         /** @var string */
         return $salt;
     }
@@ -193,11 +228,17 @@ class Signer implements SignerInterface
      */
     private function createScope($self_key, $client_id)
     {
-        /** @var string */
-        return sprintf(
+        $scope = sprintf(
             '%s/%s/signer',
             $self_key,
             $client_id
         );
+
+        $this->logger->debug(__FUNCTION__, [
+            'scope' => $scope,
+        ]);
+
+        /** @var string */
+        return $scope;
     }
 }

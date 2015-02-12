@@ -2,6 +2,7 @@ composer.lock
 phpcs.xml
 phpdoc.dist.xml
 phpmd.xml
+bin/
 docs/_build/
 build/
 tests/results/
