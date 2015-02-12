@@ -178,10 +178,10 @@ class Signer implements SignerInterface, LoggerAwareInterface
         $canonical_context     = implode("\n", $canonical_payload) . "\n\n" . $signed_headers_string;
 
         $this->logger->debug(__FUNCTION__, [
-            'payload'               => $payload,
-            'canonical_payload'     => $canonical_payload,
+            'payload' => $payload,
+            'canonical_payload' => $canonical_payload,
             'signed_headers_string' => $signed_headers_string,
-            'canonical_context'     => $canonical_context,
+            'canonical_context' => $canonical_context,
         ]);
 
         /** @var string */
