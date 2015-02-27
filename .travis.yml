@@ -11,7 +11,7 @@ before_script:
   - 'travis_retry composer self-update'
   - 'travis_retry composer install --no-interaction --prefer-source --dev -o'
   - 'wget https://scrutinizer-ci.com/ocular.phar'
-  - 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ] && [ $(php -r "echo PHP_MINOR_VERSION;") -le 4 ]; then echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
+  - 'if [ "$TRAVIS_PHP_VERSION" != "hhvm" ] && ([ $(php -r "echo PHP_MAJOR_VERSION;") -eq 5 ] && [ $(php -r "echo PHP_MINOR_VERSION;") -le 4 ]); then echo "extension = apc.so" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini; fi;'
   - 'phpenv rehash'
 
 script:
