@@ -1,6 +1,6 @@
+language: php
 dist: trusty
 group: edge
-language: php
 php:
   - 5.4
   - 5.5
@@ -17,6 +17,11 @@ matrix:
   fast_finish: true
   allow_failures:
     - php: hhvm-nightly
+    - php:hhvm-3.3
+    - php:hhvm-3.6
+    - php:hhvm-3.9
+    - php:hhvm-3.12
+    - php:hhvm-nightly
 
 before_script:
   - 'travis_retry composer self-update'
